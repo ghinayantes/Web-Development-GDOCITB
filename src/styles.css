@@ -1,8 +1,5 @@
-/* =========================================================
-   DESIGN TOKENS
-   ========================================================= */
 :root {
-  --font-display: 'Space Mono', 'Courier New', monospace;
+  --font-display: 'Inter', 'Courier New', monospace;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --radius-sm: 4px;
