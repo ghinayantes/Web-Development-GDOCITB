@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Space Mono', 'Courier New', monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Design tokens ported 1:1 from the Module 1 styles.css custom properties.
+   Tailwind utilities read these via arbitrary values, e.g. bg-(--bg). */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --wrap-width: 1120px;
+  --transition-fast: 150ms ease;
+  --transition-med: 300ms ease;
+}
+
+[data-theme='dark'] {
+  --bg: #0b0c0e;
+  --bg-alt: #131519;
+  --surface: #17191e;
+  --border: #2a2d33;
+  --text: #eef0f0;
+  --text-dim: #9a9fa6;
+  --accent: #fb8888;
+  --accent-soft: rgba(255, 138, 61, 0.12);
+  --terminal-bar: #1d1f24;
+}
+
+[data-theme='light'] {
+  --bg: #f7f5f0;
+  --bg-alt: #efece4;
+  --surface: #ffffff;
+  --border: #ddd8cc;
+  --text: #17181a;
+  --text-dim: #5c5f66;
+  --accent: #d85c1f;
+  --accent-soft: rgba(216, 92, 31, 0.1);
+  --terminal-bar: #eae6db;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background var(--transition-med), color var(--transition-med);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 700ms ease both;
+}
